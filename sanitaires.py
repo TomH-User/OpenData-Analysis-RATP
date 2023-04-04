@@ -55,7 +55,7 @@ for toilette in data:
 
 # Dessiner le chemin hamiltonien en rouge
 coordinates = [coords[node] for node in hamiltonian_path]
-folium.PolyLine(coordinates, color='red', weight=2).add_to(m)
+folium.PolyLine(coordinates, color='red', weight=8).add_to(m)
 
 # Trouver tous les plus courts chemins entre toutes les paires de nœuds
 for source in G.nodes:
