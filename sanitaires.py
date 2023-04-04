@@ -1,7 +1,7 @@
 import json
 import networkx as nx
 from geopy.distance import geodesic
-import matplotlib.pyplot as plt
+import folium
 
 # Charger les données JSON
 with open('sanitaires-reseau-ratp.json', 'r', encoding='utf-8') as f:
@@ -43,14 +43,28 @@ for i in range(len(hamiltonian_path)-1):
 distance_totale_km = distance_totale / 1000
 print("Distance totale du chemin hamiltonien :", distance_totale_km, "kilomètres")
 
+# Créer une carte centrée sur Paris
+m = folium.Map(location=[48.8566, 2.3522], zoom_start=13)
 
+# Ajouter des marqueurs pour chaque station
+for toilette in data:
+    name = toilette['station']
+    lat = toilette['coord_geo']['lat']
+    lon = toilette['coord_geo']['lon']
+    folium.Marker([lat, lon], tooltip=name).add_to(m)
 
-# Dessiner le graphe
-pos = nx.spring_layout(G)
-nx.draw_networkx_nodes(G, pos, node_size=10)
-nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='black', alpha=0.2)
-nx.draw_networkx_edges(G, pos, edgelist=[(hamiltonian_path[i], hamiltonian_path[i+1]) for i in range(len(hamiltonian_path)-1)],
-                       edge_color='red', width=2)
-plt.axis('off')
-plt.show()
+# Dessiner le chemin hamiltonien en rouge
+coordinates = [coords[node] for node in hamiltonian_path]
+folium.PolyLine(coordinates, color='red', weight=2).add_to(m)
 
+# Trouver tous les plus courts chemins entre toutes les paires de nœuds
+for source in G.nodes:
+    for target in G.nodes:
+        if source != target:
+            for path in nx.algorithms.shortest_paths.all_shortest_paths(G, source=source, target=target, weight='weight'):
+                coordinates = [coords[node] for node in path]
+                folium.PolyLine(coordinates, color='black', weight=1).add_to(m)
+(m)
+
+# Afficher la carte
+m.save('sanitaires-reseau-ratp.html')
