@@ -28,19 +28,29 @@ for toilette in data:
 # Trouver le chemin hamiltonien avec le plus court chemin
 hamiltonian_path = nx.algorithms.approximation.traveling_salesman.traveling_salesman_problem(G, weight='weight')
 
-# Calculer la distance totale du chemin hamiltonien
-total_distance = 0
+# Initialiser la distance totale à zéro
+distance_totale = 0
+
+# Ajouter les distances entre les nœuds consécutifs dans le chemin hamiltonien
 for i in range(len(hamiltonian_path)-1):
-    total_distance += G[hamiltonian_path[i]][hamiltonian_path[i+1]]['weight']
-total_distance += G[hamiltonian_path[-1]][hamiltonian_path[0]]['weight']
+    node1 = hamiltonian_path[i]
+    node2 = hamiltonian_path[i+1]
+    edge_data = G.get_edge_data(node1, node2)
+    edge_distance = edge_data['weight']
+    distance_totale += edge_distance
+
+# Afficher la distance totale en kilomètres
+distance_totale_km = distance_totale / 1000
+print("Distance totale du chemin hamiltonien :", distance_totale_km, "kilomètres")
+
+
 
 # Dessiner le graphe
 pos = nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos, node_size=10)
-nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='lightblue', alpha=0.2)
+nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color='black', alpha=0.2)
 nx.draw_networkx_edges(G, pos, edgelist=[(hamiltonian_path[i], hamiltonian_path[i+1]) for i in range(len(hamiltonian_path)-1)],
                        edge_color='red', width=2)
 plt.axis('off')
-plt.title(f"Distance totale: {total_distance:.2f}m")
 plt.show()
 
