@@ -20,7 +20,7 @@
 
 - Représentation par dessus la carte d'Île de France du graphe avec les marqueurs pour chaque sanitaires et du chemin hamiltonien en rouge.
 
-- Sauvegarde de la carte générée sous forme d'un fichier HTML.
+- Sauvegarde de la carte générée sous la forme d'un fichier HTML.
 
 <h3> Bibliothèques utilisées </h3>
 
