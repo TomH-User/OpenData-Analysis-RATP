@@ -2,7 +2,7 @@
 
 <h3>Objectif</h3>
 
-Développement d'un script permettant de visualiser les parcours des agents d'entretien, optimiser leurs itinéraires et la planification des tâches de nettoyage en fonction de l'accessibilité des zones et des temps de parcours. <br>
+Développement d'un script permettant de visualiser l'ensemble des parcours potentiels des agents d'entretien de la RATP et optimiser la planification de leurs itinéraires. <br>
 
 <p align="center" float="left" >
   <img width=480 src="https://user-images.githubusercontent.com/73723037/230899469-e30a5204-9e38-4e03-b1ab-7f100e24a5b1.JPG"> <br>
