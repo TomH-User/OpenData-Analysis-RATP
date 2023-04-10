@@ -5,17 +5,9 @@
 Développement d'un script permettant de visualiser les parcours des agents d'entretien, optimiser leurs itinéraires et la planification des tâches de nettoyage en fonction de l'accessibilité des zones et des temps de parcours. <br>
 
 <p align="center" float="left" >
-  <kbd>
   <img width=480 src="https://user-images.githubusercontent.com/73723037/230899469-e30a5204-9e38-4e03-b1ab-7f100e24a5b1.JPG"> <br>
-  </kbd>
-  
-  <kbd>
   <img width=500 src="https://user-images.githubusercontent.com/73723037/230898956-a7ec43ab-544b-4a39-8043-8de421508064.JPG"> <br>
-  </kbd>
-  
-  <kbd>
   <img width=550 src="https://user-images.githubusercontent.com/73723037/230899030-3fe02677-8d7f-4d22-9f54-ce686e699940.JPG"> <br>
-  </kbd>
 </p>
 
 <h3> Méthodologie </h3>
