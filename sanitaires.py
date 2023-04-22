@@ -3,17 +3,17 @@ import networkx as nx
 from geopy.distance import geodesic
 import folium
 
-# Charger les données JSON
+# Chargement des données JSON
 with open('sanitaires-reseau-ratp.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# Créer un graphe en utilisant les coordonnées géographiques
+# Création du graphe en utilisant les coordonnées géographiques
 G = nx.Graph()
 
-# Dictionnaire pour stocker les coordonnées de chaque station
+# Déclaration du dictionnaire qui permettra de stocker les coordonnées de chaque station
 coords = {}
 
-# Parcourir les données et ajouter les nœuds et les arêtes au graphe
+# Parcour des données + ajout des nœuds et arêtes au graphe
 for toilette in data:
     name = toilette['station']
     lon = toilette['coord_geo']['lon']
@@ -25,13 +25,13 @@ for toilette in data:
             distance = geodesic(coords[name], other_coords).m
             G.add_edge(name, other_name, weight=distance)
 
-# Trouver le chemin hamiltonien avec le plus court chemin
+# Recherche du chemin hamiltonien avec le plus court chemin
 hamiltonian_path = nx.algorithms.approximation.traveling_salesman.traveling_salesman_problem(G, weight='weight')
 
-# Initialiser la distance totale à zéro
+# Initialisation de la distance totale à zéro
 distance_totale = 0
 
-# Ajouter les distances entre les nœuds consécutifs dans le chemin hamiltonien
+# Ajout des distances entre les nœuds consécutifs dans le chemin hamiltonien
 for i in range(len(hamiltonian_path)-1):
     node1 = hamiltonian_path[i]
     node2 = hamiltonian_path[i+1]
@@ -39,25 +39,25 @@ for i in range(len(hamiltonian_path)-1):
     edge_distance = edge_data['weight']
     distance_totale += edge_distance
 
-# Afficher la distance totale en kilomètres
+# Affichage de la distance totale en kilomètres
 distance_totale_km = distance_totale / 1000
 print("Distance totale du chemin hamiltonien :", distance_totale_km, "kilomètres")
 
-# Créer une carte centrée sur Paris
+# Création d'une carte centrée sur Paris
 m = folium.Map(location=[48.8566, 2.3522], zoom_start=13)
 
-# Ajouter des marqueurs pour chaque station
+# Ajout des marqueurs pour chaque station
 for toilette in data:
     name = toilette['station']
     lat = toilette['coord_geo']['lat']
     lon = toilette['coord_geo']['lon']
     folium.Marker([lat, lon], tooltip=name).add_to(m)
 
-# Dessiner le chemin hamiltonien en rouge
+# Dessin du chemin hamiltonien en rouge
 coordinates = [coords[node] for node in hamiltonian_path]
 folium.PolyLine(coordinates, color='red', weight=8).add_to(m)
 
-# Trouver tous les plus courts chemins entre toutes les paires de nœuds
+# Recherche de tous les plus courts chemins entre toutes les paires de nœuds
 for source in G.nodes:
     for target in G.nodes:
         if source != target:
@@ -66,5 +66,5 @@ for source in G.nodes:
                 folium.PolyLine(coordinates, color='black', weight=1).add_to(m)
 (m)
 
-# Afficher la carte
+# Affichage de la carte
 m.save('sanitaires-reseau-ratp.html')
