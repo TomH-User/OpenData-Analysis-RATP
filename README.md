@@ -2,7 +2,7 @@
 
 <h3>Objectif</h3>
 
-À partir des données disponibles sur data.ratp <a href="https://data.ratp.fr/explore/dataset/sanitaires-reseau-ratp/information/?location=10,48.85478,2.41287&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6InNhbml0YWlyZXMtcmVzZWF1LXJhdHAiLCJvcHRpb25zIjp7fX0sImNoYXJ0cyI6W3siYWxpZ25Nb250aCI6dHJ1ZSwidHlwZSI6ImNvbHVtbiIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiM2NmMyYTUifV0sInhBeGlzIjoibGlnbmUiLCJtYXhwb2ludHMiOjUwLCJzb3J0IjoiIn1dLCJ0aW1lc2NhbGUiOiIiLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D">(ici)</a>, nous avons développer un script python permettant de visualiser, pour un agent d'entretien fictif de la RATP, le chemin hamiltonien le plus court permettant de visiter toutes les sanitaires.
+À partir des données disponibles sur <a href="https://data.ratp.fr/explore/dataset/sanitaires-reseau-ratp/information/?location=10,48.85478,2.41287&dataChart=eyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6InNhbml0YWlyZXMtcmVzZWF1LXJhdHAiLCJvcHRpb25zIjp7fX0sImNoYXJ0cyI6W3siYWxpZ25Nb250aCI6dHJ1ZSwidHlwZSI6ImNvbHVtbiIsImZ1bmMiOiJDT1VOVCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiM2NmMyYTUifV0sInhBeGlzIjoibGlnbmUiLCJtYXhwb2ludHMiOjUwLCJzb3J0IjoiIn1dLCJ0aW1lc2NhbGUiOiIiLCJkaXNwbGF5TGVnZW5kIjp0cnVlLCJhbGlnbk1vbnRoIjp0cnVlfQ%3D%3D">data.ratp</a>, nous avons développer un script python permettant de visualiser, pour un agent d'entretien fictif de la RATP, le chemin hamiltonien le plus court permettant de visiter toutes les sanitaires.
 L'objectif à terme étant d'optimiser la planification des itinéraires des agents. <br>
 
 <p align="center" float="left" >
