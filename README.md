@@ -1,4 +1,4 @@
-<h1>OpenData-Analysis-RATP (en cours)</h1>
+<h1>OpenData-Analysis-RATP</h1>
 
 <h3>Objectif</h3>
 
