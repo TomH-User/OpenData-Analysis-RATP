@@ -13,7 +13,7 @@ G = nx.Graph()
 # Déclaration du dictionnaire qui permettra de stocker les coordonnées de chaque station
 coords = {}
 
-# Parcour des données + ajout des nœuds et arêtes au graphe
+# Parcours des données + ajout des nœuds et arêtes au graphe
 for toilette in data:
     name = toilette['station']
     lon = toilette['coord_geo']['lon']
